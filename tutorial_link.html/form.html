@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Form Login</title>
+</head>
+<body>
+          <h1>Selamat Datang</h1>
+        <p>
+          <a href="index.html" title="Go to Home" style="color:pink">Home</a> |
+          <a href="contact.html" title="Go to Contact" style="color:rgb(148, 73, 246)">Contact</a> |
+          <a href="about.html" title="Go to About" style="color:rgb(140, 78, 111);">About</a> |
+          <a href="download.html" style="color:rgb(57, 63, 235);background-color: rgb(106, 213, 255);">Download</a>
+          <a href="form.html" style="color:rgb(1, 96, 36);background-color: rgb(144, 250, 202);">Form</a>
+
+        </p>
+    <form action="login.php" method="POST">
+    <fieldset>
+        <legend>Login</legend>
+        <p>
+            <label>Username:</label>
+            <input type="text" name="username" placeholder="username..." />
+        </p>
+          <p>
+            <label>Password:</label>
+            <input type="password" name="password" placeholder="password..." />
+        </p>
+        <p>
+            <label><input type="checkbox" name="remember" value="remember" /> Remember me</label>
+        </p>
+        <p>
+            <input type="submit" name="submit" value="Login" />
+        </p>
+    </fieldset>
+    </form>
+    <title>Contact Us</title>
+</head>
+<body>
+    <form action="contact.php" method="POST">
+        <fieldset>
+        <legend>Contact</legend>
+        <p>
+            <label>Name:</label>
+            <input type="text" name="name" placeholder="your name..." />
+        </p>
+        <p>
+            <label>Subject:</label>
+            <input type="text" name="subject" placeholder="subject..." />
+        </p>
+        <p>
+            <label>Email:</label>
+            <input type="email" name="email" placeholder="your email..." />
+        </p>
+        <p>
+            <input type="submit" name="submit" value="Send" />
+        </p>
+        </fieldset>
+    </form>
+    <head>
+    <title>Registrasi</title>
+</head>
+<body>
+    <form action="contact.php" method="POST">
+        <fieldset>
+        <legend>Registrasi</legend>
+        <p>
+            <label>Nama:</label>
+            <input type="text" name="nama" placeholder="Nama lengkap..." />
+        </p>
+        <p>
+            <label>Username:</label>
+            <input type="text" name="username" placeholder="Username..." />
+        </p>
+        <p>
+            <label>Email:</label>
+            <input type="email" name="email" placeholder="Your email..." />
+        </p>
+        <p>
+            <label>Password:</label>
+            <input type="password" name="password" placeholder="Passowrd..." />
+        </p>
+        <p>
+            <label>Jenis kelamin:</label>
+            <label><input type="radio" name="jenis_kelamin" value="laki-laki" /> Laki-laki</label>
+            <label><input type="radio" name="jenis_kelamin" value="perempuan" /> Perempuan</label>
+        </p>
+        <p>
+            <label>Agama:</label>
+            <select name="agama">
+                <option value="islam">Islam</option>
+                <option value="kristen">Kristen</option>
+                <option value="hindu">Hindu</option>
+                <option value="budha">Budha</option>
+            </select>
+        </p>
+        <p>
+            <label>Biografi:</label>
+            <textarea name="biografi"></textarea>
+        </p>
+        <p>
+            <input type="submit" name="submit" value="Daftar" />
+        </p>
+        </fieldset>
+    </form>
+     <title>Form HTML</title>
+</head>
+<body>
+    <form action="contact.php" method="POST">
+        <fieldset>
+        <legend>Form</legend>
+        <p>
+            <label>Alamat Web:</label>
+            <input type="url" name="name" placeholder="Masukan URL Web..." />
+        </p>
+        <p>
+            <label>Tanggal Lahir:</label>
+            <input type="date" name="tanggal" />
+        </p>
+        <p>
+            <label>Umur:</label>
+            <input type="number" min="10" max="90" name="umur" />
+        </p>
+        <p>
+            <input type="submit" name="submit" value="Send" />
+        </p>
+        </fieldset>
+    </form>
+</body>
+</html>
