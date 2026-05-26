@@ -1,15 +1,24 @@
 <?php
 include 'koneksi.php';
 
-// Menangkap data yang dikirim dari form
-$nama          = $_POST['nama'];
-$alamat        = $_POST['alamat'];
-$tempat_lahir  = $_POST['tempat_lahir'];
-$tanggal_lahir = $_POST['tanggal_lahir'];
+if (isset($_POST['tambah']) || isset($_POST['submit'])) {
+    $username = mysqli_real_escape_string($koneksi, $_POST['username']);
+    $password = md5('12345'); // Set password default biar tidak kosong
+    $role     = 'users';
 
-// Query untuk memasukkan (INSERT) data ke database
-$query = mysqli_query($koneksi, "INSERT INTO biodata_guru (nama, alamat, tempat_lahir, tanggal_lahir) VALUES ('$nama', '$alamat', '$tempat_lahir', '$tanggal_lahir')");
+    // Menambah data ke tabel users yang tersedia
+    $query = mysqli_query($koneksi, "INSERT INTO users (username, password, role) VALUES ('$username', '$password', '$role')");
 
-// Mengalihkan halaman kembali ke index.php
-header("location:index.php");
+    if ($query) {
+        echo "<script>
+                alert('Data berhasil ditambahkan! 🦅');
+                window.location.href = 'index.php';
+              </script>";
+    } else {
+        echo "<script>
+                alert('Gagal menambah data: " . mysqli_error($koneksi) . "');
+                window.location.href = 'tambah.php';
+              </script>";
+    }
+}
 ?>

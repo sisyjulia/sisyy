@@ -1,29 +1,27 @@
 <?php
 include 'koneksi.php';
 
-if (isset($_POST['daftar'])) {
-    $username      = mysqli_real_escape_string($koneksi, $_POST['username']);
-    $password      = md5($_POST['password']); 
-    $email         = mysqli_real_escape_string($koneksi, $_POST['email']);
-    $role          = 'users'; // Otomatis sebagai users biasa
-    $nama          = mysqli_real_escape_string($koneksi, $_POST['nama']);
-    $kelas         = $_POST['kelas'];
-    $tanggal_lahir = $_POST['tanggal_lahir'];
-    $jenis_kelamin = $_POST['jenis_kelamin'];
+<?php
+include 'koneksi.php';
 
-    $cek_user = mysqli_query($koneksi, "SELECT * FROM users WHERE username = '$username'");
-    
-    if (mysqli_num_rows($cek_user) > 0) {
-        echo "<script>alert('Aduh, username ini sudah diambil pesilat lain! Coba bikin nama yang unik ya! 🥺');</script>";
+if (isset($_POST['daftar']) || isset($_POST['submit'])) {
+    $username = mysqli_real_escape_string($koneksi, $_POST['username']);
+    $password = md5($_POST['password']); // Enkripsi MD5
+    $role     = 'users'; // Set default sebagai user biasa
+
+    // Hanya memasukkan kolom yang terbukti ada di database online kamu
+    $query = mysqli_query($koneksi, "INSERT INTO users (username, password, role) VALUES ('$username', '$password', '$role')");
+
+    if ($query) {
+        echo "<script>
+                alert('Pendaftaran berhasil! Silakan login. 🙏✨');
+                window.location.href = 'login.php';
+              </script>";
     } else {
-        $query_daftar = "INSERT INTO users (nama, kelas, tanggal_lahir, jenis_kelamin, username, email, password, role) 
-                         VALUES ('$nama', '$kelas', '$tanggal_lahir', '$jenis_kelamin', '$username', '$email', '$password', '$role')";
-        
-        if (mysqli_query($koneksi, $query_daftar)) {
-            echo "<script>alert('Pendaftaran Berhasil! Selamat bergabung di keluarga besar Perisai Diri! 🎉🥋'); window.location='login.php';</script>";
-        } else {
-            echo "<script>alert('Aduh, sistem error: " . mysqli_error($koneksi) . "');</script>";
-        }
+        echo "<script>
+                alert('Gagal mendaftar: " . mysqli_error($koneksi) . "');
+                window.location.href = 'daftar.php';
+              </script>";
     }
 }
 ?>
