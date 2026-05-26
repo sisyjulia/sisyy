@@ -174,7 +174,7 @@ if (isset($_POST['simpan'])) {
 
             <div class="d-flex justify-content-between align-items-center border-top pt-4">
                 <a href="index.php" class="btn-back">Kembali</a>
-                <button type="submit" name="simpan" class="btn-save">Simpan Anggota 🙏</button>
+                <button type="submit" name="tambah" class="btn-save">Simpan Anggota 🙏</button>
             </div>
         </form>
     </div>
