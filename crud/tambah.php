@@ -22,14 +22,17 @@ if (isset($_POST['tambah'])) {
     
     if (mysqli_num_rows($cek_user) > 0) {
         echo "<script>alert('Gagal! Username sudah terdaftar, coba nama lain ya! 🥺');</script>";
+    // ... kode cek_user di atasnya biarkan saja ...
     } else {
         $query_simpan = "INSERT INTO users (nama, kelas, tanggal_lahir, jenis_kelamin, username, email, password, role) 
                          VALUES ('$nama', '$kelas', '$tanggal_lahir', '$jenis_kelamin', '$username', '$email', '$password', '$role')";
         
+        // UBAH BAGIAN INI UNTUK MENAMPILKAN ERROR ASLI
         if (mysqli_query($koneksi, $query_simpan)) {
             echo "<script>alert('Yey! Anggota baru berhasil didaftarkan ke padepokan! 🥋✨'); window.location='index.php';</script>";
         } else {
-            echo "<script>alert('Aduh gagal simpan: " . mysqli_error($koneksi) . " 😭');</script>";
+            // Kita matikan script alert bawaan, kita paksa cetak error di layar putih agar terlihat jelas
+            die("Gagal simpan ke database karena error SQL: " . mysqli_error($koneksi));
         }
     }
 }
