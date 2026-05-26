@@ -31,8 +31,7 @@ if (isset($_POST['tambah'])) {
         if (mysqli_query($koneksi, $query_simpan)) {
             echo "<script>alert('Yey! Anggota baru berhasil didaftarkan ke padepokan! 🥋✨'); window.location='index.php';</script>";
         } else {
-            // Kita matikan script alert bawaan, kita paksa cetak error di layar putih agar terlihat jelas
-            die("Gagal simpan ke database karena error SQL: " . mysqli_error($koneksi));
+            echo "<script>alert('Aduh gagal simpan: " . mysqli_error($koneksi) . " 😭');</script>";
         }
     }
 }
@@ -125,7 +124,7 @@ if (isset($_POST['tambah'])) {
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Tingkatan Sistem (Role)</label>
                     <select name="role" class="form-select" required>
-                        <option value="users">User (Lihat Saja)</option>
+                        <option value="user">User (Lihat Saja)</option>
                         <option value="admin">Admin (Modifikasi)</option>
                     </select>
                 </div>
