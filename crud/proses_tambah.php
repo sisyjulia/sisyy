@@ -1,24 +1,25 @@
 <?php
 include 'koneksi.php';
 
-if (isset($_POST['tambah']) || isset($_POST['submit'])) {
+// HAPUS atau KOMENTARI dulu baris IF ISS-ET nya biar kodenya langsung dieksekusi:
+// if (isset($_POST['tambah']) || isset($_POST['submit'])) {
+
     $username = mysqli_real_escape_string($koneksi, $_POST['username']);
-    $password = md5('12345'); // Set password default biar tidak kosong
+    $password = md5('12345'); 
     $role     = 'users';
 
-    // Menambah data ke tabel users yang tersedia
+    // Kita tes apakah data username-nya masuk atau kosong
+    echo "Username yang dikirim: " . $username . "<br>";
+
     $query = mysqli_query($koneksi, "INSERT INTO users (username, password, role) VALUES ('$username', '$password', '$role')");
 
     if ($query) {
-        echo "<script>
-                alert('Data berhasil ditambahkan! 🦅');
-                window.location.href = 'index.php';
-              </script>";
+        echo "Hebat! Data berhasil masuk ke database.";
     } else {
-        echo "<script>
-                alert('Gagal menambah data: " . mysqli_error($koneksi) . "');
-                window.location.href = 'tambah.php';
-              </script>";
+        // Ini akan memunculkan pesan error asli dari MySQL jika ada kolom yang salah
+        echo "Gagal masuk database karena: " . mysqli_error($koneksi);
     }
-}
+
+    // Kita stop kodingannya di sini dulu biar gak langsung pindah halaman
+    die(); 
 ?>
