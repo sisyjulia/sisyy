@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     exit;
 }
 
-if (isset($_POST['simpan'])) {
+if (isset($_POST['tambah'])) {
     $username      = mysqli_real_escape_string($koneksi, $_POST['username']);
     $password      = md5($_POST['password']); 
     $email         = mysqli_real_escape_string($koneksi, $_POST['email']);
